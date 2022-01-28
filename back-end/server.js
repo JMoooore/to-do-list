@@ -13,7 +13,7 @@ const pool = new pg.Pool ({
     password: process.env.DATABASE_PASSWORD
 })
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.json())
 

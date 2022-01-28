@@ -3,6 +3,7 @@ import axios from "axios";
 import SortTask from './SortTask';
 import ModifyTask from './ModifyTask';
 import TaskList from './TaskList';
+import Loading from "./Loading";
 
 class App extends Component {
   constructor(props) {
@@ -19,17 +20,22 @@ class App extends Component {
   componentDidMount() {
     axios.get('http://localhost:3000/todos')
       .then((response) => {
-        this.setState({tasks: response.data})
+        this.setState({tasks: response.data, loading: false})
       })
   }
 
   render() {
-    console.log(this.state.tasks);
     return (
     <div className="App">
-      <SortTask />
-      <ModifyTask />
-      <TaskList />
+      {this.state.loading ? 
+      <Loading />
+      :
+      <>
+        <SortTask />
+        <ModifyTask />
+        <TaskList tasks={this.state.tasks} singleTask={this.state.singleTask} additionalTask={this.state.additionalTask}/>
+      </>
+      }
     </div>
     )
   };

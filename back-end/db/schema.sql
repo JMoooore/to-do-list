@@ -5,7 +5,7 @@ CREATE DATABASE to_do_list_db;
 
 DROP TABLE IF EXISTS tasks;
 CREATE TABLE tasks (
-    id serial PRIMARY KEY NOT NULL,
+    task_id serial PRIMARY KEY NOT NULL,
     task_importance numeric(1),
     task_title text,
     task_owner varchar(20),

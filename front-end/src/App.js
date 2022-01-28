@@ -1,4 +1,4 @@
-import React, {Component, useState} from "react";
+import React, {Component} from "react";
 import axios from "axios";
 import SortTask from './SortTask';
 import ModifyTask from './ModifyTask';
@@ -12,16 +12,32 @@ class App extends Component {
     this.state = {
       loading: true,
       tasks: null,
-      singleTask: null,
-      additionalTask: null
+      additionalTask: null,
+      sort: "id"
     }
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/todos')
+    axios.get(`http://localhost:3000/todos?sort=id`)
       .then((response) => {
         this.setState({tasks: response.data, loading: false})
       })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.sort !== prevState.sort) {
+      this.setState({loading: true})
+      axios.get(`http://localhost:3000/todos?sort=${this.state.sort}`)
+      .then((response) => {
+        this.setState({tasks: response.data, loading: false})
+      })
+    }
+  }
+
+  handleSort = (selection) => {
+    this.setState((state) => {
+      return {sort: selection}
+    })
   }
 
   render() {
@@ -31,7 +47,7 @@ class App extends Component {
       <Loading />
       :
       <>
-        <SortTask />
+        <SortTask handleSort={this.handleSort}/>
         <ModifyTask />
         <TaskList tasks={this.state.tasks} singleTask={this.state.singleTask} additionalTask={this.state.additionalTask}/>
       </>

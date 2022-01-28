@@ -17,15 +17,6 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.json())
 
-app.get('/todos', async (req,res) => {
-    try {
-        const {rows} = await pool.query("SELECT * FROM tasks ORDER BY id")
-        res.send(rows)
-    } catch (error) {
-        errorHandling(error, res)
-    }
-})
-
 app.get('/todos/:id', async (req,res) => {
     try {
         const id = req.params.id
@@ -36,24 +27,17 @@ app.get('/todos/:id', async (req,res) => {
     }
 })
 
-app.get('/todos?sort=user', async (req,res) => {
+
+
+app.get('/todos', async (req,res) => {
     try {
-        const {rows} = await pool.query("SELECT * FROM tasks ORDER BY task_owner")
+        const sort = req.query.sort
+        const {rows} = await pool.query(`SELECT * FROM tasks ORDER BY task_${sort}`)
         res.send(rows)
     } catch (error) {
         errorHandling(error, res)
     }
 })
-
-app.get('/todos?sort=importance', async (req,res) => {
-    try {
-        const {rows} = await pool.query("SELECT * FROM tasks ORDER BY task_importance")
-        res.send(rows)
-    } catch (error) {
-        errorHandling(error, res)
-    }
-})
-
 
 app.post('/todos', async (req,res) => {
     try {

@@ -4,7 +4,7 @@ import TaskItem from './TaskItem';
 const TaskList = (props) => {
     return (
         <div>
-            {props.tasks.map((result) => <TaskItem key={result.id} importance={result.task_importance} title={result.task_title} owner={result.task_owner}/> )}
+            {props.tasks.map((result) => <TaskItem key={result.task_id} importance={result.task_importance} title={result.task_title} owner={result.task_owner}/> )}
         </div>
     )
 }

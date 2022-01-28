@@ -1,27 +1,35 @@
 import React, {Component, useState} from "react";
 import axios from "axios";
+import SortTask from './SortTask';
+import ModifyTask from './ModifyTask';
+import TaskList from './TaskList';
 
 class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      todos: null
+      loading: true,
+      tasks: null,
+      singleTask: null,
+      additionalTask: null
     }
   }
 
   componentDidMount() {
     axios.get('http://localhost:3000/todos')
       .then((response) => {
-        this.setState({todos: response.data})
+        this.setState({tasks: response.data})
       })
   }
 
   render() {
-    console.log(this.state.todos);
+    console.log(this.state.tasks);
     return (
     <div className="App">
-      This is just a div
+      <SortTask />
+      <ModifyTask />
+      <TaskList />
     </div>
     )
   };

@@ -12,4 +12,4 @@ CREATE TABLE tasks (
     task_complete boolean
 );
 
-\i db/seed.sql
+\i /Users/HankMoore/Desktop/react-apps/to-do-list/back-end/db/seed.sql

@@ -12,7 +12,6 @@ class App extends Component {
     this.state = {
       loading: true,
       tasks: null,
-      additionalTask: null,
       singleTask: null,
       sort: "id"
     }

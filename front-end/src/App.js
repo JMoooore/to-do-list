@@ -34,6 +34,10 @@ class App extends Component {
       })
   }
 
+  handleSingleTask = (obj) => {
+    this.setState({singleTask: obj})
+  }
+
   render() {
     return (
     <div className="App">
@@ -43,7 +47,7 @@ class App extends Component {
       <>
         <SortTask sort={this.state.sort} handleSort={this.handleSort}/>
         <ModifyTask />
-        <TaskList tasks={this.state.tasks} singleTask={this.state.singleTask} additionalTask={this.state.additionalTask}/>
+        <TaskList tasks={this.state.tasks} singleTask={this.state.singleTask} handleSingleTask={this.handleSingleTask}/>
       </>
       }
     </div>

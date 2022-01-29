@@ -1,21 +1,28 @@
 import React from 'react';
 import TaskItem from './TaskItem';
-import SingleTask from './SingleTask';
 
 const TaskList = (props) => {
     if (props.singleTask) {
         return (
-            <SingleTask />
+            <TaskItem 
+                key={props.singleTask.id}
+                id={props.singleTask.id}
+                importance={props.singleTask.importance}
+                title={props.singleTask.title}
+                owner={props.singleTask.owner}
+             />
         )
     }
     return (
         <div>
             {props.tasks.map((result) => 
             <TaskItem
-             importance={result.task_importance}
-             title={result.task_title}
-             owner={result.task_owner}
-             additionalTask={props.additionalTask}
+                handleSingleTask={props.handleSingleTask}
+                key={result.task_id}
+                id={result.task_id}
+                importance={result.task_importance}
+                title={result.task_title}
+                owner={result.task_owner}
              /> )}
         </div>
     )

@@ -13,6 +13,7 @@ class App extends Component {
       loading: true,
       tasks: null,
       additionalTask: null,
+      singleTask: null,
       sort: "id"
     }
   }
@@ -24,20 +25,13 @@ class App extends Component {
       })
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.sort !== prevState.sort) {
-      this.setState({loading: true})
-      axios.get(`http://localhost:3000/todos?sort=${this.state.sort}`)
+  handleSort = (event) => {
+    this.setState({loading: true, sort: event.target.value})
+    axios.get(`http://localhost:3000/todos?sort=${event.target.value}`)
       .then((response) => {
+        console.log(event.target.value);
         this.setState({tasks: response.data, loading: false})
       })
-    }
-  }
-
-  handleSort = (selection) => {
-    this.setState((state) => {
-      return {sort: selection}
-    })
   }
 
   render() {
@@ -47,7 +41,7 @@ class App extends Component {
       <Loading />
       :
       <>
-        <SortTask handleSort={this.handleSort}/>
+        <SortTask sort={this.state.sort} handleSort={this.handleSort}/>
         <ModifyTask />
         <TaskList tasks={this.state.tasks} singleTask={this.state.singleTask} additionalTask={this.state.additionalTask}/>
       </>

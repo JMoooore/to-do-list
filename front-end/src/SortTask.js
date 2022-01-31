@@ -31,7 +31,7 @@ const SortTask = (props) => {
     }
 
     return (
-          <select value={props.sort} onChange={handleChange}>            
+          <select id='sort-btn' value={props.sort} onChange={handleChange}>            
             <option value="id">Sort by Time</option>
             <option value="complete">Sort by Completion</option>
             <option value="owner">Sort by Owner</option>

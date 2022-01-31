@@ -4,7 +4,7 @@ import TaskItem from './TaskItem';
 const TaskList = (props) => {
     if (props.singleTask) {
         return (
-            <TaskItem 
+            <TaskItem
                 key={props.singleTask.id}
                 id={props.singleTask.id}
                 importance={props.singleTask.importance}
@@ -14,7 +14,7 @@ const TaskList = (props) => {
         )
     }
     return (
-        <div>
+        <div className='task-list'>
             {props.tasks.map((result) => 
             <TaskItem
                 handleSingleTask={props.handleSingleTask}

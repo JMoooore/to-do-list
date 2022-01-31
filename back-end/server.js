@@ -42,9 +42,9 @@ app.get('/todos', async (req,res) => {
 
 app.post('/todos', async (req,res) => {
     try {
-        const {importance, title, owner, complete} = req.body
+        const {importance, title, owner} = req.body
         await pool.query(`INSERT INTO tasks(task_importance, task_title, task_owner, task_complete) VALUES ($1, $2, $3, $4)`,
-            [importance, title, owner, complete]
+            [importance, title, owner, false]
         );
         res.send('updated');
     } catch (err) {

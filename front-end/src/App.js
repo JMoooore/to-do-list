@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
 import SortTask from './SortTask';
-import ModifyTask from './ModifyTask';
+import NewTask from './NewTask';
 import TaskList from './TaskList';
 import Loading from "./Loading";
 
@@ -49,7 +49,7 @@ class App extends Component {
       :
       <>
         <SortTask sort={this.state.sort} handleSort={this.handleSort}/>
-        <ModifyTask />
+        <NewTask />
         <TaskList tasks={this.state.tasks} singleTask={this.state.singleTask} handleSingleTask={this.handleSingleTask} setComplete={this.handleSetComplete}/>
       </>
       }

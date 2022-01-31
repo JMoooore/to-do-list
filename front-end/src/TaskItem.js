@@ -21,7 +21,7 @@ const TaskItem = (props) => {
     
 
     return (
-        <div className={`task-item ${isActive ? null : "clicked-item"}`}>
+        <div className={`task-item ${isActive ? "clicked-item": null}`}>
             {/* <label className='checkbox-label' onChange={handleToggle}> */}
                 <input type='checkbox' className='checkbox' onChange={handleToggle}></input>
             {/* </label> */}

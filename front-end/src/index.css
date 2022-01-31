@@ -11,7 +11,6 @@ body {
 #task-list {
     display: flex;
     flex-direction: column;
-
     background-color: #345830;
 }
 
@@ -23,7 +22,7 @@ body {
     border-radius: 10px;
     background-color: #94ECBE;
     justify-content: space-between;
-    min-width: 400px;
+    width: 600px;
 }
 
 .clicked-item {
@@ -51,13 +50,29 @@ body {
     
 }
 
-#modify-btn {
+.modify-btn {
     display: flex;
+    background-color: #4A7856;
+    border-radius: 5px;
+    height: 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modify-btn input {
+    margin: 15px;
+    width: 80px;
+    border-radius: 5px;
+}
+
+.modify-btn label {
+    margin: 5px;
 }
 
 #sort-btn {
     background-color: #4A7856;
     border-radius: 10px;
+    margin: 10px;
 }
 
 #loading-component {

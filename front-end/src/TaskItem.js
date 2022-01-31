@@ -6,14 +6,17 @@ const TaskItem = (props) => {
             key: props.id,
             importance: props.importance,
             title: props.title,
-            owner: props.owner
+            owner: props.owner,
+            complete: props.complete
         }  
         props.handleSingleTask(singleTask)
     }
 
-    const [isActive, setActive] = useState("false");
+    const [isActive, setActive] = useState(props.complete);
     const handleToggle = () => {
+        console.log(props.complete);
         setActive(!isActive)
+        props.setComplete(props.id)
     }
     
 

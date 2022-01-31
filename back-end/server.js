@@ -18,9 +18,10 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json())
 
 app.get('/todos/:id', async (req,res) => {
+    console.log(req.params.id);
     try {
         const id = req.params.id
-        const {rows} = await pool.query("SELECT * FROM tasks WHERE id = $1", [id])
+        const {rows} = await pool.query("SELECT * FROM tasks WHERE task_id = $1", [id])
         res.send(rows)
     } catch (error) {
         errorHandling(error, res)
@@ -54,24 +55,27 @@ app.post('/todos', async (req,res) => {
 
 app.patch('/todos/:id', async (req,res) => {
     try {
-        const id = req.params.id
-        const dbData = await pool.query(`SELECT * FROM tasks WHERE id = $1`, [id])
+        const task_id = req.params.id
+        const dbData = await pool.query(`SELECT * FROM tasks WHERE task_id = ${task_id}`)
         const singleTask = dbData.rows[0];
         let {task_importance, task_title, task_owner, task_complete} = singleTask;
         if (req.body.importance) {
             task_importance = req.body.importance
         }
         if (req.body.title)  {
+            console.log("one");
             task_title = req.body.title
         }
         if (req.body.owner) {
+            console.log("two");
             task_owner = req.body.owner
         }
         if (req.body.complete) {
-            task_complete = req.body.complete
+            console.log("three");
+            task_complete = !task_complete
         }
-        await pool.query(`UPDATE tasks SET task_importance = $1, task_title = $2, task_owner = $3, task_complete = $4 WHERE id = $5`,
-            [task_importance, task_title, task_owner, task_complete, id]
+        await pool.query(`UPDATE tasks SET task_importance = $1, task_title = $2, task_owner = $3, task_complete = $4 WHERE task_id = $5`,
+            [task_importance, task_title, task_owner, task_complete, task_id]
         );
         res.send('updated');
     } catch (error) {

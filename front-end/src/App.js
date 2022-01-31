@@ -37,6 +37,10 @@ class App extends Component {
     this.setState({singleTask: obj})
   }
 
+  handleSetComplete = (id) => {
+    axios.patch(`http://localhost:3000/todos/${id}`, {complete: " "})
+  }
+
   render() {
     return (
     <div className="App">
@@ -46,7 +50,7 @@ class App extends Component {
       <>
         <SortTask sort={this.state.sort} handleSort={this.handleSort}/>
         <ModifyTask />
-        <TaskList tasks={this.state.tasks} singleTask={this.state.singleTask} handleSingleTask={this.handleSingleTask}/>
+        <TaskList tasks={this.state.tasks} singleTask={this.state.singleTask} handleSingleTask={this.handleSingleTask} setComplete={this.handleSetComplete}/>
       </>
       }
     </div>

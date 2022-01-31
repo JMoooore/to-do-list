@@ -9,7 +9,7 @@ import React from 'react';
 const ModifyTask = (props) => {
     
     return (
-        <div>This is the buttons to ModifyTask</div>
+        <div className='modify-btn'>This is the buttons to ModifyTask</div>
     )
 }
 

@@ -1,4 +1,59 @@
-body {
-
+#root {
+    display: flex;
+    
+    
 }
 
+body {
+    background-color: #1a1f16;
+}
+
+#task-list {
+    display: flex;
+    flex-direction: column;
+    
+    background-color: #345830;
+}
+
+.task-item {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #94ECBE;
+    justify-content: space-between;
+    min-width: 400px;
+}
+
+.clicked-item {
+    text-decoration: line-through;
+}
+
+.checkbox {
+    
+}
+
+.task-title {
+    font-size: xx-large;
+    
+}
+
+.task-owner {
+    font-size: small;
+    align-self: flex-end;
+}
+
+.task-importance {
+    
+}
+
+
+#sort-btn {
+    background-color: #4A7856;
+    border-radius: 10px;
+}
+
+#loading-component {
+    background-color: #1E3F20;
+}

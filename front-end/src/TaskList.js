@@ -1,18 +1,22 @@
 import React from 'react';
 import TaskItem from './TaskItem';
+import BackButton from  './BackButton';
 
 const TaskList = (props) => {
     if (props.singleTask) {
         return (
-            <TaskItem
-                setComplete={props.setComplete}
-                key={props.singleTask.id}
-                id={props.singleTask.id}
-                importance={props.singleTask.importance}
-                title={props.singleTask.title}
-                owner={props.singleTask.owner}
-                complete={props.singleTask.complete}
-             />
+            <>
+                <TaskItem
+                    setComplete={props.setComplete}
+                    key={props.singleTask.id}
+                    id={props.singleTask.id}
+                    importance={props.singleTask.importance}
+                    title={props.singleTask.title}
+                    owner={props.singleTask.owner}
+                    complete={props.singleTask.complete}
+                />
+                <BackButton handleSingleTask={props.handleSingleTask}/>
+            </>
         )
     }
     return (

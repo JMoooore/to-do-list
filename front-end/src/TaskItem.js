@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const TaskItem = (props) => {
     const handleTask = () => {
         const singleTask = {
-            key: props.id,
+            id: props.id,
             importance: props.importance,
             title: props.title,
             owner: props.owner,

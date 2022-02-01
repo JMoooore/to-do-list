@@ -1,6 +1,7 @@
 import React from 'react';
 import TaskItem from './TaskItem';
 import BackButton from  './BackButton';
+import DeleteButton from './DeleteButton';
 
 const TaskList = (props) => {
     if (props.singleTask) {
@@ -15,7 +16,10 @@ const TaskList = (props) => {
                     owner={props.singleTask.owner}
                     complete={props.singleTask.complete}
                 />
+                <div>
                 <BackButton handleSingleTask={props.handleSingleTask}/>
+                <DeleteButton id={props.singleTask.id} deleteTask={props.deleteSingleTask} handleSingleTask={props.handleSingleTask}/>
+                </div>
             </>
         )
     }

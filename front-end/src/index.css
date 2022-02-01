@@ -1,11 +1,15 @@
 #root {
     display: flex;
-    
-    
+    justify-content: center;
 }
 
 body {
+    background: url('https://images.unsplash.com/photo-1446071103084-c257b5f70672?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1284&q=80');
+    font-family: 'Inter', sans-serif;
+    font-family: 'Lato', sans-serif;
     background-color: #1a1f16;
+    color: #282828;
+    text-shadow: 2px 2px cornsilk;
 }
 
 #task-list {
@@ -27,8 +31,8 @@ body {
 
 .clicked-item {
     text-decoration: line-through;
-    text-decoration-thickness: 20px;
-    text-decoration-color: #1A1F16;
+    text-decoration-thickness: 10px;
+    text-decoration-color: #282828;
 }
 
 .checkbox {
@@ -51,18 +55,22 @@ body {
 }
 
 .modify-btn {
+    font-family: 'Inter', sans-serif;
+    font-family: 'Lato', sans-serif;
     display: flex;
-    background-color: #4A7856;
+    background-color: #94ECBE;
     border-radius: 5px;
     height: 30px;
     justify-content: space-between;
     align-items: center;
+    text-shadow: none;
 }
 
 .modify-btn input {
     margin: 15px;
     width: 80px;
     border-radius: 5px;
+    border-color:#1A1F16;
 }
 
 .modify-btn label {
@@ -70,9 +78,25 @@ body {
 }
 
 #sort-btn {
+    font-family: 'Inter', sans-serif;
+    font-family: 'Lato', sans-serif;
     background-color: #4A7856;
     border-radius: 10px;
     margin: 10px;
+    color: cornsilk;
+    text-shadow: 2px 2px #282828;
+    /* border-color:#1A1F16; */
+}
+
+.btn {
+    font-family: 'Inter', sans-serif;
+    font-family: 'Lato', sans-serif;
+    background-color: #4A7856;
+    border-radius: 10px;
+    margin: 10px;
+    color: cornsilk;
+    text-shadow: 2px 2px #282828;
+    /* border-color:#1A1F16; */
 }
 
 #loading-component {

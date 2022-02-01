@@ -41,6 +41,16 @@ class App extends Component {
     axios.patch(`http://localhost:3000/todos/${id}`, {complete: " "})
   }
 
+  deleteSingleTask = (id) => {
+    this.setState({loading: true})
+    axios.delete(`http://localhost:3000/todos/${id}`)
+    // .then(this.setState({loading: true}))
+    axios.get(`http://localhost:3000/todos?sort=id`)
+      .then((response) => {
+        this.setState({tasks: response.data, loading: false})
+      })
+  }
+
   render() {
     return (
     <div className="App">
@@ -50,7 +60,11 @@ class App extends Component {
       <>
         <SortTask sort={this.state.sort} handleSort={this.handleSort}/>
         <NewTask />
-        <TaskList tasks={this.state.tasks} singleTask={this.state.singleTask} handleSingleTask={this.handleSingleTask} setComplete={this.handleSetComplete}/>
+        <TaskList tasks={this.state.tasks}
+                  singleTask={this.state.singleTask}
+                  handleSingleTask={this.handleSingleTask}
+                  setComplete={this.handleSetComplete}
+                  deleteSingleTask={this.deleteSingleTask}/>
       </>
       }
     </div>

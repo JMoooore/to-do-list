@@ -1,13 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
-
-//When you select a single element it prefills a form that lets you edit it
-
-
-
-
-const ModifyTask = (props) => {
+const NewTask = (props) => {
     const [state, setState] = React.useState({
         title: "",
         owner: "",
@@ -57,11 +51,11 @@ const ModifyTask = (props) => {
                 onChange={handleChange}
                 />
             </label>
-            <input type="submit" value="New Task" onClick={onSubmit}></input>
+            <input className='btn' type="submit" value="New Task" onClick={onSubmit}></input>
         </form>
     )
 }
 
 
 
-export default ModifyTask
+export default NewTask

@@ -7,7 +7,7 @@ const BackButton = (props) => {
     }
 
     return (
-        <button type="button" onClick={emptySingleTask}>Go Back</button>
+        <button type="button" className='btn' id='back-button' onClick={emptySingleTask}>Go Back</button>
     )
 }
 

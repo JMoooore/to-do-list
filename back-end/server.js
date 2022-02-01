@@ -63,21 +63,29 @@ app.patch('/todos/:id', async (req,res) => {
             task_importance = req.body.importance
         }
         if (req.body.title)  {
-            console.log("one");
             task_title = req.body.title
         }
         if (req.body.owner) {
-            console.log("two");
             task_owner = req.body.owner
         }
         if (req.body.complete) {
-            console.log("three");
             task_complete = !task_complete
         }
         await pool.query(`UPDATE tasks SET task_importance = $1, task_title = $2, task_owner = $3, task_complete = $4 WHERE task_id = $5`,
             [task_importance, task_title, task_owner, task_complete, task_id]
         );
         res.send('updated');
+    } catch (error) {
+        res.status(500);
+        res.json(error);
+    }
+})
+
+app.delete('/todos/:id', async (req,res) => {
+    try {
+        const task_id = req.params.id
+        await pool.query(`DELETE FROM tasks WHERE task_id = ${task_id}`) 
+        res.send('deleted')   
     } catch (error) {
         res.status(500);
         res.json(error);
